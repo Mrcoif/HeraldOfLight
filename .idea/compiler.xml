@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.7">
+      <module name="Game2.android" target="12" />
+      <module name="SatGameZagProject.android" target="1.8" />
+      <module name="SatGameZagProjectTestCamera.android" target="1.8" />
+      <module name="SatGameZagRunner.android" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -45,7 +45,7 @@ public class InventoryActor extends Actor {
 
     @Override
     public void act(float delta) {
-        if (Gdx.input.isTouched() && time > 10 &&
+        if (Gdx.input.isTouched() && time > 60 &&
                 touchPos.x > chestCords.x &&
                 touchPos.x < chestCords.x + width &&
                 touchPos.y > SCREEN_HEIGHT - chestHeight &&
@@ -63,7 +63,7 @@ public class InventoryActor extends Actor {
                 time = 0;
             }
         }
-        if (time <= 100) time++;
+        if (time < 60) time++;
     }
 
     public void draw(Batch batch, float parentAlpha) {

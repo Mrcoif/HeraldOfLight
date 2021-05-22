@@ -15,7 +15,7 @@ import static com.mygdx.game.MyGame.touchPos;
 public class ItemActor extends Actor {
 
     private Texture texture;
-    private com.mygdx.game.GeneralActors.UserInterface.InventoryActor inventoryActor;
+    private InventoryActor inventoryActor;
 
     public boolean used = false;
     public int place;
@@ -30,7 +30,7 @@ public class ItemActor extends Actor {
 
         this.itemName = itemName;
 
-        inventoryActor = new com.mygdx.game.GeneralActors.UserInterface.InventoryActor( );
+        inventoryActor = new InventoryActor();
 
         cordsInInventory = new Vector2(-1000, -1000);
         setPosition(cordsInInventory.x, cordsInInventory.y);
@@ -40,16 +40,16 @@ public class ItemActor extends Actor {
         this.texture = texture;
         this.place = place;
 
-        setWidth((float) (texture.getWidth( ) / 2));
-        setHeight((float) (texture.getHeight( ) / 2));
+        setWidth((float) (texture.getWidth() / 2));
+        setHeight((float) (texture.getHeight() / 2));
     }
 
     @Override
     public void act(float delta) {
-        Stage stage = getStage( );
-        Array<Actor> actors = stage.getActors( );
+        Stage stage = getStage();
+        Array<Actor> actors = stage.getActors();
         for (Actor actor : actors) {
-            if (actor instanceof com.mygdx.game.GeneralActors.UserInterface.InventoryActor) {
+            if (actor instanceof InventoryActor) {
                 inventoryActor = (InventoryActor) actor;
             }
         }
@@ -57,27 +57,37 @@ public class ItemActor extends Actor {
         if (used) {
             setPosition(cordsInUsed.x, cordsInUsed.y);
         } else {
-            cordsInInventory.set(inventoryActor.slotCords.x+25, inventoryActor.slotCords.y + inventoryActor.height / 3 * place+50);
+            cordsInInventory.set(inventoryActor.slotCords.x + 25, inventoryActor.slotCords.y + inventoryActor.height / 3 * place + 45);
             setPosition(cordsInInventory.x, cordsInInventory.y);
         }
 
-        if (Gdx.input.isTouched() && time > 10  && inventoryActor.inventoryIsOpen) {
+        if (Gdx.input.isTouched() && time > 10 && inventoryActor.inventoryIsOpen) {
             if (
-                    touchPos.x > getX( ) &&
-                            touchPos.x < getX( ) + 180 &&
-                            touchPos.y > getY( ) &&
-                            touchPos.y < getY( ) + 180
+                    (
+                            used &&
+                                    touchPos.x > getX() &&
+                                    touchPos.x < getX() + texture.getWidth() &&
+                                    touchPos.y > getY() &&
+                                    touchPos.y < getY() + texture.getHeight()
+                    ) ||
+                            (
+                                    !used &&
+                                            touchPos.x > inventoryActor.slotCords.x &&
+                                            touchPos.x < inventoryActor.slotCords.x + inventoryActor.width &&
+                                            touchPos.y > inventoryActor.slotCords.y + inventoryActor.height / 3 * place &&
+                                            touchPos.y < inventoryActor.slotCords.y + inventoryActor.height / 3 * place + inventoryActor.chestHeight
+                            )
             ) {
                 used = !used;
                 time = 0;
             }
 
         }
-        if(time<=1000)time++;
+        if (time <= 1000) time++;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(texture, getX( ), getY( ), getWidth( ), getHeight( ));
+        batch.draw(texture, getX(), getY(), getWidth(), getHeight());
     }
 }

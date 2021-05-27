@@ -1,10 +1,14 @@
 package com.mygdx.game.HeartStone;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
+import com.mygdx.game.GeneralActors.HeroActor;
 import com.mygdx.game.HeartStone.ObjectActors.HeartStoneHeroActor;
 import com.mygdx.game.MyGame;
 import com.mygdx.game.GeneralActors.TextureActor;
@@ -19,18 +23,22 @@ public class HeartStoneScreen extends BaseScreen {
         super(myGame, 1, -1);
         this.myGame = myGame;
 
+        music = Gdx.audio.newMusic(Gdx.files.internal("HeartStone/music.mp3"));
+        music.setLooping(true);
+        music.setVolume(0.1f);
+        System.out.println(music.toString());
         renderer = new ShapeRenderer();
     }
 
     @Override
     public void addActors() {
-        stage.addActor(new TextureActor("HeartStone/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+        stage.addActor(new TextureActor("HeartStone/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100));
 
         stage.addActor(new StoneActor());
 
         stage.addActor(new HeartStoneHeroActor(100));
 
-        stage.addActor(new TextureActor("HeartStone/frontground.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+        stage.addActor(new TextureActor("HeartStone/frontground.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100));
 
         super.addActors();
     }
@@ -44,8 +52,8 @@ public class HeartStoneScreen extends BaseScreen {
             if (actor1 instanceof StoneActor) {
                 ((StoneActor) (actor1)).drawDebug(renderer);
             }
-            if (actor1 instanceof HeartStoneHeroActor) {
-                ((HeartStoneHeroActor) (actor1)).drawDebug(renderer);
+            if (actor1 instanceof HeroActor) {
+                ((HeroActor) (actor1)).drawDebug(renderer);
             }
         }
         renderer.begin(ShapeRenderer.ShapeType.Line);

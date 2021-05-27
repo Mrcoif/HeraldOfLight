@@ -46,8 +46,7 @@ public class ItemActor extends Actor {
 
     @Override
     public void act(float delta) {
-        Stage stage = getStage();
-        Array<Actor> actors = stage.getActors();
+        Array<Actor> actors = getStage().getActors();
         for (Actor actor : actors) {
             if (actor instanceof InventoryActor) {
                 inventoryActor = (InventoryActor) actor;
@@ -61,7 +60,7 @@ public class ItemActor extends Actor {
             setPosition(cordsInInventory.x, cordsInInventory.y);
         }
 
-        if (Gdx.input.isTouched() && time > 10 && inventoryActor.inventoryIsOpen) {
+        if (Gdx.input.isTouched() && time > 10 && inventoryActor.getStatus()) {
             if (
                     (
                             used &&

@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -20,6 +21,7 @@ import static com.mygdx.game.MyGame.SCREEN_WIDTH;
 public abstract class BaseScreen implements Screen {
     public static ItemActor[] stuff = new ItemActor[4];
 
+    protected Music music;
     protected MyGame myGame;
     protected Stage stage;
 
@@ -40,11 +42,12 @@ public abstract class BaseScreen implements Screen {
 
     @Override
     public void show() {
+        music.play();
         Array<Actor> actors = stage.getActors();
         Array.ArrayIterator<Actor> iterator = actors.iterator();
         while (iterator.hasNext()) {
-            Actor actor = iterator.next();
-            if (actor instanceof ItemActor) {
+            Actor actor1 = iterator.next();
+            if (actor1 instanceof ItemActor) {
                 iterator.remove();
             }
         }
@@ -53,10 +56,26 @@ public abstract class BaseScreen implements Screen {
             stage.addActor(stuff[i]);
         }
 
+        Array<Actor> actors3 = stage.getActors();
+        for (Actor actor3 : actors3) {
+            if (actor3 instanceof HeroActor) {
+                ((HeroActor) actor3).stopHero();
+            }
+        }
+
+        Array<Actor> actors2 = stage.getActors();
+        for (Actor actor2 : actors2) {
+            if (actor2 instanceof ButtonActor) {
+                ((ButtonActor) actor2).isTouched = false;
+            }
+        }
+
     }
 
     @Override
     public void render(float delta) {
+
+        boolean changeScreen = false;
 
         Gdx.gl.glClearColor(0, 0, 0.0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -64,29 +83,54 @@ public abstract class BaseScreen implements Screen {
         stage.act();
         stage.draw();
 
-        Array<Actor> actors = stage.getActors();
-        for (Actor actor : actors) {
-            if (actor instanceof HeroActor) {
-                if (((HeroActor) actor).leftScreen || ((HeroActor) actor).rightScreen) {
-                    if (((HeroActor) actor).leftScreen) {
-                        if(left != -1){
-                            ((HeroActor) actor).leftScreen = false;
-                            myGame.setScreen(myGame.screens[left]);
-                            ((HeroActor) actor).setX(((HeroActor) actor).getX() + ((HeroActor) actor).getWidth());
-                        }
-                    } else {
-                        if(right != -1) {
-                            ((HeroActor) actor).rightScreen = false;
-                            myGame.setScreen(myGame.screens[right]);
-                            ((HeroActor) actor).setX(((HeroActor) actor).getX() - ((HeroActor) actor).getWidth());
-                        }
-                    }
-                    ((HeroActor) actor).stopHero();
-                    ((HeroActor) actor).setY(((HeroActor) actor).start.y);
+        Array<Actor> actors1 = stage.getActors();
+        for (Actor actor1 : actors1) {
+            if (actor1 instanceof HeroActor) {
+                if (((HeroActor) actor1).leftScreen || ((HeroActor) actor1).rightScreen) {
+                    changeScreen = true;
                 }
             }
         }
-        if(drawDebug) drawDebug();
+
+        if (changeScreen) {
+
+            Array<Actor> actors2 = stage.getActors();
+            for (Actor actor2 : actors2) {
+                if (actor2 instanceof ButtonActor) {
+                    ((ButtonActor) actor2).isTouched = false;
+                }
+            }
+
+            Array<Actor> actors3 = stage.getActors();
+            for (Actor actor3 : actors3) {
+                if (actor3 instanceof HeroActor) {
+                    if (((HeroActor) actor3).leftScreen || ((HeroActor) actor3).rightScreen) {
+                        changeScreen = false;
+
+                        ((HeroActor) actor3).stopHero();
+                        music.stop();
+
+                        if (((HeroActor) actor3).leftScreen) {
+                            if (left != -1) {
+                                ((HeroActor) actor3).leftScreen = false;
+                                myGame.setScreen(myGame.screens[left]);
+                                ((HeroActor) actor3).setX(0 + ((HeroActor) actor3).getWidth());
+                            }
+                        } else {
+                            if (right != -1) {
+                                ((HeroActor) actor3).rightScreen = false;
+                                myGame.setScreen(myGame.screens[right]);
+                                ((HeroActor) actor3).setX(SCREEN_WIDTH - ((HeroActor) actor3).getWidth());
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        if (drawDebug) drawDebug();
     }
 
     @Override
@@ -112,6 +156,7 @@ public abstract class BaseScreen implements Screen {
 
     @Override
     public void dispose() {
+        music.dispose();
     }
 
     public void addActors() {
@@ -128,5 +173,10 @@ public abstract class BaseScreen implements Screen {
         }
     }
 
-    protected void drawDebug(){}
+    public void stopMusic() {
+        music.stop();
+    }
+
+    protected void drawDebug() {
+    }
 }

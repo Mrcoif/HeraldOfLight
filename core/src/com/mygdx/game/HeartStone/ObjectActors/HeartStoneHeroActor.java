@@ -23,7 +23,7 @@ public class HeartStoneHeroActor extends HeroActor {
         if (
                 Gdx.input.isTouched() && touchPos.y > floorY &&
                         (
-                                touchPos.y < (float) (50 * Math.sin(0.0025 * touchPos.x) + 230)
+                                touchPos.y < (float) (50 * Math.sin(0.0025 * touchPos.x) + 170)
                         )
         ) {
             return true;

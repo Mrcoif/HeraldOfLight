@@ -1,5 +1,7 @@
 package com.mygdx.game.Island;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -18,6 +20,11 @@ public class IslandScreen extends BaseScreen {
     public IslandScreen(final MyGame myGame) {
         super(myGame, 0, 0);
         this.myGame = myGame;
+
+        music = Gdx.audio.newMusic(Gdx.files.internal("Lake/music.mp3"));
+        music.setLooping(true);
+        music.setVolume(2.0f);
+        music.play();
     }
 
     @Override
@@ -32,8 +39,6 @@ public class IslandScreen extends BaseScreen {
                 }
             }
         }
-
-        //drawDebug();
     }
 
     @Override

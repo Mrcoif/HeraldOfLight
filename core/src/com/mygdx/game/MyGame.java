@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.mygdx.game.Bridge.BridgeScreen;
 import com.mygdx.game.HeartStone.HeartStoneScreen;
 import com.mygdx.game.Island.IslandScreen;
 import com.mygdx.game.LakeSide.LakeSideScreen;
@@ -24,7 +25,7 @@ public class MyGame extends Game {
     public Stage stage;
 
     public static Vector3 touchPos;
-    public Screen[] screens = new Screen[5];
+    public BaseScreen[] screens = new BaseScreen[5];
 
     @Override
     public void create() {
@@ -38,11 +39,16 @@ public class MyGame extends Game {
         screens[0] = new HeartStoneScreen(this);
         screens[1] = new LakeSideScreen(this);
         screens[2] = new IslandScreen(this);
-        screens[3] = new CrossroadScreen(this);
-        screens[4] = new RoomScreen(this);
+        screens[3] = new BridgeScreen(this);
+//        screens[4] = new CrossroadScreen(this);
+//        screens[5] = new RoomScreen(this);
+
+        for(int i = 0; screens[i]!=null; i++){
+            screens[i].stopMusic();
+        }
 
         this.setScreen(new MainMenuScreen(this));
-//        this.setScreen(screens[4]);
+//        this.setScreen(screens[3]);
     }
 
     @Override

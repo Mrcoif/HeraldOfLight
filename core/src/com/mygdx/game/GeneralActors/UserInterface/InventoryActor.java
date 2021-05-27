@@ -3,6 +3,7 @@ package com.mygdx.game.GeneralActors.UserInterface;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
@@ -15,6 +16,7 @@ import static com.mygdx.game.MyGame.touchPos;
 public class InventoryActor extends Actor {
 
     public boolean inventoryIsOpen = false;
+    public boolean inventoryIsOpenCanChange = false;
 
     public Texture slotsTexture;
     private Texture useItemTexture;
@@ -24,12 +26,12 @@ public class InventoryActor extends Actor {
     public Vector2 slotCords;
     public Vector2 useItemCords;
 
-    public float width = 300;
-    public float height = SCREEN_HEIGHT;
+    public float width;
+    public float height;
     public float chestHeight = 165;
 
-    private int time = 0;
-    private float step = 5;
+    public float timeSeconds = 0f;
+    public float period = 1f;
 
     public InventoryActor() {
         slotsTexture = new Texture(Gdx.files.internal("General/UserInterface/Inventory/slots.png"));
@@ -45,12 +47,11 @@ public class InventoryActor extends Actor {
 
     @Override
     public void act(float delta) {
-        if (Gdx.input.isTouched() && time > 60 &&
+        if (Gdx.input.isTouched() && inventoryIsOpenCanChange &&
                 touchPos.x > chestCords.x &&
-                touchPos.x < chestCords.x + width &&
-                touchPos.y > SCREEN_HEIGHT - chestHeight &&
-                touchPos.y < SCREEN_HEIGHT
+                touchPos.y > SCREEN_HEIGHT - chestHeight
         ) {
+            inventoryIsOpenCanChange = false;
             inventoryIsOpen = !inventoryIsOpen;
             if (inventoryIsOpen && slotCords.x > SCREEN_WIDTH - getWidth())
                 slotCords.x = SCREEN_WIDTH - width;
@@ -60,15 +61,24 @@ public class InventoryActor extends Actor {
                 if (actor instanceof HeroActor) {
                     ((HeroActor) actor).stopHero();
                 }
-                time = 0;
             }
+            timeSeconds = 0;
         }
-        if (time < 60) time++;
+
+        timeSeconds += delta;
+        if(timeSeconds > period){
+            timeSeconds-=period;
+            inventoryIsOpenCanChange =true;
+        }
     }
 
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(slotsTexture, slotCords.x, slotCords.y, width, height);
         batch.draw(chestTexture, chestCords.x, chestCords.y, width, height);
         batch.draw(useItemTexture, useItemCords.x, useItemCords.y, width, height);
+    }
+
+    public boolean getStatus(){
+        return inventoryIsOpen;
     }
 }

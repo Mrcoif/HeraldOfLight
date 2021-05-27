@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.GeneralActors.UserInterface.InventoryActor;
 
 import org.jetbrains.annotations.NotNull;
@@ -57,15 +58,15 @@ public abstract class HeroActor extends Actor {
     @Override
     public void act(float delta) {
 
-
         screenTick();
 
         Array<Actor> actors = getStage().getActors();
         for (Actor actor : actors) {
             if (actor instanceof InventoryActor) {
-                if (!((InventoryActor) actor).inventoryIsOpen) {
+                if (!((InventoryActor) actor).getStatus()) {
                     if (clickCondition()) {
                         {
+
                             moveTo.x = touchPos.x;
                             moveTo.y = touchPos.y;
 
@@ -148,10 +149,10 @@ public abstract class HeroActor extends Actor {
     }
 
     protected void screenTick() {
-        if (getX() > SCREEN_WIDTH - getWidth() / 4) {
+        if (getX() > SCREEN_WIDTH - getWidth()/4*3) {
             rightScreen = true;
         }
-        if (getX() < 0 + getWidth() / 4) {
+        if (getX() < 0 + getWidth()/4*3) {
             leftScreen = true;
         }
     }

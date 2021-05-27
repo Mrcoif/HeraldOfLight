@@ -14,6 +14,7 @@ public class ButtonActor extends Actor {
     public boolean isTouched = false;
     public String buttonType;
 
+    private boolean canBeTouched = false;
     private Texture texture;
     private int time;
 
@@ -34,13 +35,14 @@ public class ButtonActor extends Actor {
         for (Actor actor : actors) {
             if (actor instanceof InventoryActor) {
                 InventoryActor inventoryActor = (InventoryActor) actor;
-                if (!inventoryActor.inventoryIsOpen) {
-                    if (Gdx.input.isTouched() && time > 15) {
+                if (!inventoryActor.getStatus()) {
+                    if (Gdx.input.isTouched() && canBeTouched) {
                         if (touchPos.x > getX() &&
                                 touchPos.x < getX() + getWidth() &&
                                 touchPos.y > getY() &&
                                 touchPos.y < getY() + getHeight()
                         ) {
+                            canBeTouched = false;
                             isTouched = true;
                             time = 0;
                         }
@@ -50,7 +52,8 @@ public class ButtonActor extends Actor {
                 }
             }
         }
-        if(time<=1000)time++;
+        time++;
+        if(time%30 == 0) canBeTouched = true;
     }
 
 

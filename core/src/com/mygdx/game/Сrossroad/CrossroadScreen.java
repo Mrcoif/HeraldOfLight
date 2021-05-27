@@ -1,5 +1,7 @@
 package com.mygdx.game.Сrossroad;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -17,11 +19,14 @@ import static com.mygdx.game.MyGame.SCREEN_WIDTH;
 
 public class CrossroadScreen extends BaseScreen {
 
-
-
     public CrossroadScreen(MyGame myGame) {
         super(myGame, 4, 1);
         this.myGame = myGame;
+
+        music = Gdx.audio.newMusic(Gdx.files.internal("HeartStone/music.mp3"));
+        music.setLooping(true);
+        music.setVolume(0.1f);
+        music.play();
 
         renderer = new ShapeRenderer();
     }

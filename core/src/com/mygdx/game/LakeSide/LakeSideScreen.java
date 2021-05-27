@@ -1,5 +1,7 @@
 package com.mygdx.game.LakeSide;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -19,6 +21,11 @@ public class LakeSideScreen extends BaseScreen {
     public LakeSideScreen(final MyGame myGame ) {
         super(myGame, 3, 0);
         this.myGame = myGame;
+
+        music = Gdx.audio.newMusic(Gdx.files.internal("Lake/music.mp3"));
+        music.setLooping(true);
+        music.setVolume(1.0f);
+        music.play();
     }
 
     @Override
@@ -56,7 +63,7 @@ public class LakeSideScreen extends BaseScreen {
     }
 
     @Override
-    protected void drawDebug(){
+    protected void drawDebug() {
         Array<Actor> actors = stage.getActors();
         Array.ArrayIterator<Actor> iterator1 = actors.iterator();
         while (iterator1.hasNext()) {
@@ -71,7 +78,7 @@ public class LakeSideScreen extends BaseScreen {
         renderer.begin(ShapeRenderer.ShapeType.Line);
         renderer.setColor(Color.MAGENTA);
         renderer.rect(360, 218, 390, 115);
-        for(float x = 0; x<= SCREEN_WIDTH; x+=0.25){
+        for (float x = 0; x <= SCREEN_WIDTH; x += 0.25) {
             renderer.point(x, (float) (60 * Math.sin(0.01 * x - 5) + 280), 0);
         }
         renderer.end();

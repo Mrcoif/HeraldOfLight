@@ -12,19 +12,17 @@ public class CrossroadHeroActor extends HeroActor {
     private float floorY;
     private float floorHeight;
     private Rectangle leftSquare;
-    private Rectangle rightSquare;
     private boolean XGo = true;
 
     public boolean leftUpScreen = false;
     public boolean rightUpScreen = false;
 
-    public CrossroadHeroActor(float floorY, float floorHeight, Rectangle leftSquare, Rectangle rightSquare) {
+    public CrossroadHeroActor(float floorY, float floorHeight, Rectangle leftSquare) {
         super();
         this.floorY = floorY;
         this.floorHeight = floorHeight;
         this.leftSquare = leftSquare;
-        this.rightSquare = rightSquare;
-        start.x = SCREEN_WIDTH - getWidth();
+        start.x = SCREEN_WIDTH/2;
         setX(start.x);
     }
 
@@ -37,11 +35,9 @@ public class CrossroadHeroActor extends HeroActor {
                                 (
                                         (getY()<floorY + floorHeight || (getX() < leftSquare.x + leftSquare.width && getY() > leftSquare.y)) &&
                                                         (touchPos.x > leftSquare.x && touchPos.x < leftSquare.x + leftSquare.width)
-                                ) ||
-                                (
-                                        (getY()<floorY + floorHeight || (getX() > rightSquare.x && getY() > rightSquare.y)) &&
-                                        touchPos.x > rightSquare.x && touchPos.x < rightSquare.x + rightSquare.width)
+                                )
                         )
+
         ) {
             return true;
         }
@@ -52,8 +48,7 @@ public class CrossroadHeroActor extends HeroActor {
     protected void moveCondition() {
         if (getY() > floorY + floorHeight && YMoveVector &&
                 (
-                        (moveTo.x < SCREEN_WIDTH/2 && !(getX() > leftSquare.x && getX() < leftSquare.x + leftSquare.width)) ||
-                                (moveTo.x > SCREEN_WIDTH/2 && !(getX() > rightSquare.x && getX() < rightSquare.x + rightSquare.width))
+                        (moveTo.x < SCREEN_WIDTH/2 && !(getX() > leftSquare.x && getX() < leftSquare.x + leftSquare.width))
                 )
         ) {
             setY(getY() - step.y);
@@ -66,8 +61,7 @@ public class CrossroadHeroActor extends HeroActor {
         }
         if (getY() > floorY + floorHeight && !YMoveVector &&
                 (
-                        (getX() < SCREEN_WIDTH/2 && (getX() - step.x < leftSquare.x || getX() + step.x > leftSquare.x + leftSquare.width)) ||
-                                (getX() > SCREEN_WIDTH/2 && (getX() - step.x < rightSquare.x || getX() + step.x > rightSquare.x + rightSquare.width))
+                        (getX() < SCREEN_WIDTH/2 && (getX() - step.x < leftSquare.x || getX() + step.x > leftSquare.x + leftSquare.width))
                 )
         ) {
             heroIsMoveX = false;

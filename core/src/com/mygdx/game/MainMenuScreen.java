@@ -47,7 +47,7 @@ public class MainMenuScreen implements Screen {
                 SCREEN_HEIGHT - touchPos.y > startY &&
                 SCREEN_HEIGHT - touchPos.y < startY + texture.getHeight()
         ) {
-            myGame.setScreen(myGame.screens[0]);
+            myGame.setScreen(myGame.screens[1]);
             dispose();
         }
 

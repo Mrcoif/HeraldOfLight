@@ -20,15 +20,15 @@ import static com.mygdx.game.MyGame.SCREEN_WIDTH;
 
 public abstract class BaseScreen implements Screen {
     public static ItemActor[] stuff = new ItemActor[4];
+    public MyGame myGame;
 
     protected Music music;
-    protected MyGame myGame;
     protected Stage stage;
+    protected boolean drawDebug = false;
+    protected ShapeRenderer renderer = new ShapeRenderer();
 
     private int right = 0;
     private int left = 0;
-    protected boolean drawDebug = false;
-    protected ShapeRenderer renderer = new ShapeRenderer();
 
     public BaseScreen(final MyGame myGame, int leftScreenId, int rightScreenId) {
         this.left = leftScreenId;
@@ -52,8 +52,8 @@ public abstract class BaseScreen implements Screen {
             }
         }
 
-        for (int i = 0; stuff[i] != null; i++) {
-            stage.addActor(stuff[i]);
+        for (int i = 0; i<3; i++) {
+            if(stuff[i]!=null)stage.addActor(stuff[i]);
         }
 
         Array<Actor> actors3 = stage.getActors();
@@ -77,7 +77,7 @@ public abstract class BaseScreen implements Screen {
 
         boolean changeScreen = false;
 
-        Gdx.gl.glClearColor(0, 0, 0.0f, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.act();
@@ -168,8 +168,8 @@ public abstract class BaseScreen implements Screen {
 
         stage.addActor(new InventoryActor());
 
-        for (int i = 0; stuff[i] != null; i++) {
-            stage.addActor(stuff[i]);
+        for (int i = 0; i<3; i++) {
+            if(stuff[i] != null)stage.addActor(stuff[i]);
         }
     }
 

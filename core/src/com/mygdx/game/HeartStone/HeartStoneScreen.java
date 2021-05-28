@@ -26,7 +26,7 @@ public class HeartStoneScreen extends BaseScreen {
         music = Gdx.audio.newMusic(Gdx.files.internal("HeartStone/music.mp3"));
         music.setLooping(true);
         music.setVolume(0.1f);
-        System.out.println(music.toString());
+        music.stop();
         renderer = new ShapeRenderer();
     }
 
@@ -34,7 +34,7 @@ public class HeartStoneScreen extends BaseScreen {
     public void addActors() {
         stage.addActor(new TextureActor("HeartStone/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100));
 
-        stage.addActor(new StoneActor());
+        stage.addActor(new StoneActor(this));
 
         stage.addActor(new HeartStoneHeroActor(100));
 

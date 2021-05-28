@@ -14,7 +14,7 @@ import static com.mygdx.game.MyGame.touchPos;
 
 public class ItemActor extends Actor {
 
-    private Texture texture;
+    public Texture texture;
     private InventoryActor inventoryActor;
 
     public boolean used = false;

@@ -9,23 +9,25 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
 import com.mygdx.game.GeneralActors.TextureActor;
+import com.mygdx.game.LakeSide.ObjectActors.HeartActor;
 import com.mygdx.game.LakeSide.ObjectActors.LakeSideHeroActor;
 import com.mygdx.game.LakeSide.ObjectActors.PillarActor;
 import com.mygdx.game.MyGame;
 
 import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
 import static com.mygdx.game.MyGame.SCREEN_WIDTH;
+import static com.mygdx.game.MyGame.touchPos;
 
 public class LakeSideScreen extends BaseScreen {
 
     public LakeSideScreen(final MyGame myGame ) {
-        super(myGame, 3, 0);
+        super(myGame, 1, -1);
         this.myGame = myGame;
 
         music = Gdx.audio.newMusic(Gdx.files.internal("Lake/music.mp3"));
         music.setLooping(true);
         music.setVolume(1.0f);
-        music.play();
+        music.stop();
     }
 
     @Override
@@ -41,7 +43,8 @@ public class LakeSideScreen extends BaseScreen {
             if (actor2 instanceof PillarActor) {
                 if (((PillarActor) actor2).islandScreen) {
                     ((PillarActor) actor2).islandScreen = false;
-                    myGame.setScreen(myGame.screens[2]);
+                    music.stop();
+                    myGame.setScreen(myGame.screens[4]);
                 }
             }
         }
@@ -54,6 +57,10 @@ public class LakeSideScreen extends BaseScreen {
         stage.addActor(new PillarActor(1));
 
         stage.addActor(new PillarActor(2));
+
+        stage.addActor(new HeartActor());
+
+        stage.addActor(new TextureActor("Lake/cane.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
         stage.addActor(new LakeSideHeroActor(100, 118, new Rectangle(360, 218, 390, 115)));
 

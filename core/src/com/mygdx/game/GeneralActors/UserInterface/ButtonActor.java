@@ -53,7 +53,7 @@ public class ButtonActor extends Actor {
             }
         }
         time++;
-        if(time%30 == 0) canBeTouched = true;
+        if(time>30) canBeTouched = true;
     }
 
 

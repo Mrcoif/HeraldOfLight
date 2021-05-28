@@ -20,7 +20,7 @@ public class LakeSideHeroActor extends HeroActor {
         this.floorY = floorY;
         this.floorHeight = floorHeight;
         this.bridge = bridge;
-        start.x = SCREEN_WIDTH - getWidth();
+        start.x = getWidth() + 1;
         setX(start.x);
     }
 
@@ -61,15 +61,6 @@ public class LakeSideHeroActor extends HeroActor {
     }
 
     @Override
-    protected boolean stopCondition() {
-//        if (getX() - getWidth() / 2 - 1 < 0) {
-//            setX(0 + getWidth() / 2);
-//            return true;
-//        }
-        return false;
-    }
-
-    @Override
     protected void moveCondition() {
         if (getY() > floorY + floorHeight && (getX() < bridge.x || getX() > bridge.x + bridge.width) && YMoveVector) {
             setY(getY() - step.y);
@@ -96,4 +87,14 @@ public class LakeSideHeroActor extends HeroActor {
             step.y = (step.x * (b)) / (a);
         }
     }
+
+    @Override
+    protected boolean stopCondition() {
+        if (getX() + getWidth() + startStep +1 > SCREEN_WIDTH){
+            setX(SCREEN_WIDTH- getWidth() - startStep-1);
+            return true;
+        }
+        return false;
+    }
+
 }

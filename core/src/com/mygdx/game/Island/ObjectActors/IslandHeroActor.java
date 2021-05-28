@@ -12,7 +12,7 @@ public class IslandHeroActor extends HeroActor {
 
     public IslandHeroActor(float floorY, float floorHeight) {
         super();
-        start.x = 700;
+        start.x = 570;
         start.y = 200;
         setX(start.x);
         setY(start.y);

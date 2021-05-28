@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
 import com.mygdx.game.Bridge.ObjectActors.BridgeHeroActor;
+import com.mygdx.game.Bridge.ObjectActors.LeftHeartPartActor;
+import com.mygdx.game.Bridge.ObjectActors.StonesActor;
 import com.mygdx.game.GeneralActors.HeroActor;
 import com.mygdx.game.GeneralActors.TextureActor;
 import com.mygdx.game.HeartStone.ObjectActors.HeartStoneHeroActor;
@@ -20,6 +22,8 @@ import static com.mygdx.game.MyGame.touchPos;
 
 public class BridgeScreen extends BaseScreen {
 
+    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+
     public BridgeScreen(final MyGame myGame) {
         super(myGame, -1, 1);
         this.myGame = myGame;
@@ -27,7 +31,7 @@ public class BridgeScreen extends BaseScreen {
         music = Gdx.audio.newMusic(Gdx.files.internal("Bridge/music.mp3"));
         music.setLooping(true);
         music.setVolume(0.06f);
-        music.play();
+        music.stop();
         renderer = new ShapeRenderer();
     }
 
@@ -35,9 +39,17 @@ public class BridgeScreen extends BaseScreen {
     public void addActors() {
         stage.addActor(new TextureActor("Bridge/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
+        stage.addActor(new StonesActor());
+
+        stage.addActor(new LeftHeartPartActor());
+
         stage.addActor(new BridgeHeroActor(100));
 
-        //stage.addActor(new TextureActor("Bridge/frontground.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+        stage.addActor(new TextureActor("Bridge/frontground.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+
+        stage.addActor(new TextureActor("Bridge/grass.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+
+        stage.addActor(new TextureActor("Bridge/light.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
         super.addActors();
     }
@@ -57,14 +69,13 @@ public class BridgeScreen extends BaseScreen {
         renderer.setColor(Color.MAGENTA);
 
         for(float x = 250; x<=987; x+=0.1){
-//            renderer.point(x, (float) (-0.0008 * (x-460)*(x-460) + 0.0001 * x + 420), 0);
             renderer.point(x, (float) (-0.0008 * (x-550)*(x-550) + 0.0001 * x + 440), 0);
         }
 
         renderer.rect(230, 250, 757, 310);
         renderer.rect(987, 180, 350, 110);
+        shapeRenderer.rect(400, 475, 100, 10);
 
         renderer.end();
     }
-
 }

@@ -23,30 +23,29 @@
 16-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:8:9-30
 17        android:label="Herald of light"
 17-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:10:9-40
-18        android:testOnly="true"
-19        android:theme="@style/GdxTheme" >
-19-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:11:9-40
-20        <activity
-20-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:12:9-21:20
-21            android:name="com.mygdx.game.AndroidLauncher"
-21-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:13:13-58
-22            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout"
-22-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:16:13-107
-23            android:label="Herald of light"
-23-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:14:13-44
-24            android:screenOrientation="landscape" >
-24-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:15:13-50
-25            <intent-filter>
-25-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:17:13-20:29
-26                <action android:name="android.intent.action.MAIN" />
-26-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:18:17-69
-26-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:18:25-66
-27
-28                <category android:name="android.intent.category.LAUNCHER" />
-28-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:19:17-77
-28-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:19:27-74
-29            </intent-filter>
-30        </activity>
-31    </application>
-32
-33</manifest>
+18        android:theme="@style/GdxTheme" >
+18-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:11:9-40
+19        <activity
+19-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:12:9-21:20
+20            android:name="com.mygdx.game.AndroidLauncher"
+20-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:13:13-58
+21            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout"
+21-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:16:13-107
+22            android:label="Herald of light"
+22-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:14:13-44
+23            android:screenOrientation="landscape" >
+23-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:15:13-50
+24            <intent-filter>
+24-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:17:13-20:29
+25                <action android:name="android.intent.action.MAIN" />
+25-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:18:17-69
+25-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:18:25-66
+26
+27                <category android:name="android.intent.category.LAUNCHER" />
+27-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:19:17-77
+27-->D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:19:27-74
+28            </intent-filter>
+29        </activity>
+30    </application>
+31
+32</manifest>

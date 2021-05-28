@@ -16,7 +16,7 @@ public class BridgeHeroActor extends HeroActor {
     public BridgeHeroActor(float floorY) {
         super();
         this.floorY = floorY;
-        start.x = SCREEN_WIDTH - 100;
+        start.x = SCREEN_WIDTH - getWidth();
         start.y = 200;
         setX(start.x);
         setY(start.y);

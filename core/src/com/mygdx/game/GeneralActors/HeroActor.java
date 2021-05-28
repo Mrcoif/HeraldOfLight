@@ -34,7 +34,7 @@ public abstract class HeroActor extends Actor {
     protected Texture texture;
     protected Rectangle boundary;
 
-    protected float startStep = 5;
+    protected float startStep = 20;
     protected Vector2 step = new Vector2(5, 5);
     public Vector2 moveTo = new Vector2();
     public Vector2 start = new Vector2(40, 100);
@@ -107,10 +107,8 @@ public abstract class HeroActor extends Actor {
         }
         if (heroIsMoveX) {
             if (XMoveVector && getX() < moveTo.x) {
-                //if (getX() + step.x < SCREEN_WIDTH - getWidth() + step.x)
                 setX(getX() + step.x);
             } else if (!XMoveVector && getX() > moveTo.x) {
-                //if (getX() - step.x > -step.x)
                 setX(getX() - step.x);
             } else {
                 heroIsMoveX = false;
@@ -118,10 +116,8 @@ public abstract class HeroActor extends Actor {
         }
         if (heroIsMoveY) {
             if (YMoveVector && getY() < moveTo.y) {
-                //if (getY() + step.y < floorY + floorHeight)
                 setY(getY() + step.y);
             } else if (!YMoveVector && getY() > moveTo.y) {
-                //if (getY() - step.y > floorY)
                 setY(getY() - step.y);
             } else {
                 heroIsMoveY = false;

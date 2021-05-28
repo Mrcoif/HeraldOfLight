@@ -13,7 +13,7 @@ public class HeartStoneHeroActor extends HeroActor {
     public HeartStoneHeroActor(float floorY) {
         super();
         this.floorY = floorY;
-        start.x = SCREEN_WIDTH /2;
+        start.x = getWidth()+1;
         setX(start.x);
     }
 
@@ -34,8 +34,8 @@ public class HeartStoneHeroActor extends HeroActor {
 
     @Override
     protected boolean stopCondition() {
-        if (getX() + getWidth()/2 + 1 > SCREEN_WIDTH){
-            setX(SCREEN_WIDTH- getWidth()/2);
+        if (getX() + getWidth() + startStep +1 > SCREEN_WIDTH){
+            setX(SCREEN_WIDTH- getWidth() - startStep-1);
             return true;
         }
         return false;

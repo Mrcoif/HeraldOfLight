@@ -1,7 +1,6 @@
 package com.mygdx.game.Bridge;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -9,16 +8,13 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
 import com.mygdx.game.Bridge.ObjectActors.BridgeHeroActor;
 import com.mygdx.game.Bridge.ObjectActors.LeftHeartPartActor;
-import com.mygdx.game.Bridge.ObjectActors.StonesActor;
+import com.mygdx.game.Сrossroad.ObjectActors.StonesActor;
 import com.mygdx.game.GeneralActors.HeroActor;
 import com.mygdx.game.GeneralActors.TextureActor;
-import com.mygdx.game.HeartStone.ObjectActors.HeartStoneHeroActor;
-import com.mygdx.game.HeartStone.ObjectActors.StoneActor;
 import com.mygdx.game.MyGame;
 
 import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
 import static com.mygdx.game.MyGame.SCREEN_WIDTH;
-import static com.mygdx.game.MyGame.touchPos;
 
 public class BridgeScreen extends BaseScreen {
 
@@ -39,11 +35,11 @@ public class BridgeScreen extends BaseScreen {
     public void addActors() {
         stage.addActor(new TextureActor("Bridge/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
-        stage.addActor(new StonesActor());
-
         stage.addActor(new LeftHeartPartActor());
 
         stage.addActor(new BridgeHeroActor(100));
+
+        stage.addActor(new TextureActor("Bridge/water.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
         stage.addActor(new TextureActor("Bridge/frontground.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 

@@ -1,18 +1,15 @@
 package com.mygdx.game.Island;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
-import com.mygdx.game.Bridge.ObjectActors.StonesActor;
 import com.mygdx.game.GeneralActors.HeroActor;
 import com.mygdx.game.GeneralActors.TextureActor;
 import com.mygdx.game.GeneralActors.UserInterface.ButtonActor;
-import com.mygdx.game.GeneralActors.UserInterface.ItemActor;
 import com.mygdx.game.Island.ObjectActors.IslandHeroActor;
 import com.mygdx.game.Island.ObjectActors.NestActor;
 import com.mygdx.game.Island.ObjectActors.RodActor;
@@ -24,6 +21,8 @@ import static com.mygdx.game.MyGame.SCREEN_WIDTH;
 public class IslandScreen extends BaseScreen {
 
     private int darkTime = 100000;
+    private Sound crackSound = Gdx.audio.newSound(Gdx.files.internal("Island/crackSound.mp3"));
+    private int textTime;
 
     public IslandScreen(final MyGame myGame) {
         super(myGame, -1, -1);
@@ -49,13 +48,27 @@ public class IslandScreen extends BaseScreen {
 
         Array<Actor> actors2 = stage.getActors();
         for (Actor actor2 : actors2) {
+            if (actor2 instanceof ButtonActor) {
+                if (((ButtonActor) actor2).isTouched && ((ButtonActor) actor2).buttonType.equals("explore")) {
+                    textTime = 0;
+                }
+            }
+        }
+        if (textTime < 180) {
+            textTime += 1;
+            myGame.batch.begin();
+            myGame.getFont().draw(myGame.batch, "Can I break a nest?", 100, 400);
+            myGame.batch.end();
+        }
+
+        for (Actor actor2 : actors2) {
             if (actor2 instanceof HeroActor) {
-                if (((HeroActor) actor2).getX()<570) {
+                if (((HeroActor) actor2).getX() < 570) {
                     overlap = true;
                 }
             }
         }
-        if(overlap) {
+        if (overlap) {
             for (Actor actor2 : actors2) {
                 if (actor2 instanceof ButtonActor) {
                     if (((ButtonActor) actor2).buttonType.equals("use") && ((ButtonActor) actor2).isTouched) {
@@ -67,23 +80,25 @@ public class IslandScreen extends BaseScreen {
             }
         }
 
-        if(darkTime>210){
+        if (darkTime > 240) {
             for (Actor actor2 : actors2) {
                 if (actor2 instanceof TextureActor) {
-                    if(((TextureActor)actor2).getHeight() == SCREEN_HEIGHT+100){
-                        ((TextureActor)actor2).remove();
+                    if (((TextureActor) actor2).getHeight() == SCREEN_HEIGHT + 100) {
+                        ((TextureActor) actor2).remove();
+                        music.play();
                     }
                 }
             }
         }
-        if(darkTime<300)darkTime++;
+        if (darkTime < 300) darkTime++;
     }
+
 
     @Override
     public void addActors() {
-        stage.addActor(new TextureActor("Island/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+        stage.addActor(new TextureActor("Island/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100));
 
-        stage.addActor(new TextureActor("Island/boat.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+        stage.addActor(new TextureActor("Island/boat.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100));
 
         stage.addActor(new NestActor(this));
 
@@ -95,7 +110,7 @@ public class IslandScreen extends BaseScreen {
     }
 
     @Override
-    protected void drawDebug(){
+    protected void drawDebug() {
         Array<Actor> actors = stage.getActors();
         Array.ArrayIterator<Actor> iterator1 = actors.iterator();
         while (iterator1.hasNext()) {
@@ -107,15 +122,18 @@ public class IslandScreen extends BaseScreen {
 
         renderer.begin(ShapeRenderer.ShapeType.Line);
         renderer.setColor(Color.MAGENTA);
-        for(float x = 0; x<= SCREEN_WIDTH; x+=0.25){
+        for (float x = 0; x <= SCREEN_WIDTH; x += 0.25) {
             renderer.point(x, (float) (50 * Math.sin(0.005 * x + 400) + 170), 0);
             renderer.point(x, (float) (-50 * Math.sin(0.005 * x + 400) + 190), 0);
         }
+        renderer.rect(SCREEN_WIDTH / 2 - 50, 500, 100, 10);
         renderer.end();
     }
 
-    public void startNestFalling(){
-        stage.addActor(new TextureActor("General/black.png", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT+100));
+    public void startNestFalling() {
+        stage.addActor(new TextureActor("General/black.png", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 100));
+        stopMusic();
+        crackSound.play();
         darkTime = 0;
     }
 }

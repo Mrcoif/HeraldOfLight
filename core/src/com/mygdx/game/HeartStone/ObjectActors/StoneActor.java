@@ -1,6 +1,7 @@
 package com.mygdx.game.HeartStone.ObjectActors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -26,9 +27,10 @@ public class StoneActor extends Actor {
     private float startX = 0;
     private float startY = 100;
     private BaseScreen baseScreen;
-    private int time = 180;
+    private int textTime = 180;
     private Texture leftHeartPartTexture;
     private Texture rightHeartPartTexture;
+    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("HeartStone/heart.mp3"));
 
     public StoneActor(final BaseScreen baseScreen) {
         setX(startX);
@@ -58,7 +60,6 @@ public class StoneActor extends Actor {
         }
 
 
-
         Array.ArrayIterator<Actor> iterator2 = actors.iterator();
         if (overlap) {
             while (iterator2.hasNext()) {
@@ -70,35 +71,48 @@ public class StoneActor extends Actor {
                     }
 
                     if (buttonActor.isTouched && buttonActor.buttonType.equals("explore")) {
-                        time = 0;
+                        textTime = 0;
                     }
                 }
             }
         }
-        if(useIsTouched){
-            if(useIsTouched) {
-                Array.ArrayIterator<Actor> iterator3 = actors.iterator();
-                while (iterator3.hasNext()) {
-                    Actor actor = iterator3.next();
-                    if (actor instanceof ItemActor) {
-                        if (((ItemActor) actor).itemName.equals("leftHeartPart")) {
-                            if(((ItemActor) actor).used) {
-                                for (int i = 0; stuff[i] != null; i++) {
+        if (useIsTouched) {
+            Array.ArrayIterator<Actor> iterator3 = actors.iterator();
+            while (iterator3.hasNext()) {
+                Actor actor = iterator3.next();
+                if (actor instanceof ItemActor) {
+                    if (((ItemActor) actor).itemName.equals("leftHeartPart")) {
+                        if (((ItemActor) actor).used) {
+                            sound.play();
+                            leftHeartPartTexture = new Texture(Gdx.files.internal("HeartStone/leftHeartPart.png"));
+                            actor.toBack();
+                            for (int i = 0; i<stuff.length; i++) {
+                                if(stuff[i]!=null) {
                                     if (stuff[i].itemName.equals("leftHeartPart")) {
-                                        leftHeartPartTexture = stuff[i].texture;
-                                        stuff[i].toBack();
                                         stuff[i] = null;
+                                        break;
                                     }
                                 }
                             }
                         }
-                        if (((ItemActor) actor).itemName.equals("rightHeartPart")) {
-                            if(((ItemActor) actor).used) {
-                                for (int i = 0; stuff[i] != null; i++) {
+                    }
+                }
+            }
+
+            Array.ArrayIterator<Actor> iterator5 = actors.iterator();
+            while (iterator5.hasNext()) {
+                Actor actor = iterator5.next();
+                if (actor instanceof ItemActor) {
+                    if (((ItemActor) actor).itemName.equals("rightHeartPart")) {
+                        if (((ItemActor) actor).used) {
+                            sound.play();
+                            rightHeartPartTexture = new Texture(Gdx.files.internal("HeartStone/rightHeartPart.png"));
+                            actor.toBack();
+                            for (int i = 0; i<stuff.length; i++) {
+                                if(stuff[i]!=null) {
                                     if (stuff[i].itemName.equals("rightHeartPart")) {
-                                        rightHeartPartTexture = stuff[i].texture;
-                                        stuff[i].toBack();
                                         stuff[i] = null;
+                                        break;
                                     }
                                 }
                             }
@@ -107,18 +121,19 @@ public class StoneActor extends Actor {
                 }
             }
         }
-
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        if(time < 180) {
-            time+=1;
-            baseScreen.myGame.getFont().draw(batch,"It's stone with hole", 100, 400);
+        if (textTime < 180) {
+            textTime += 1;
+            baseScreen.myGame.getFont().draw(batch, "heart-shaped stone", 100, 400);
         }
         batch.draw(texture, getX(), getY(), getWidth(), getHeight());
-        if(leftHeartPartTexture!=null) batch.draw(leftHeartPartTexture, getX(), getY(), getWidth(), getHeight());
-        if(rightHeartPartTexture!=null) batch.draw(rightHeartPartTexture, getX(), getY(), getWidth(), getHeight());
+        if (leftHeartPartTexture != null)
+            batch.draw(leftHeartPartTexture, getX(), getY(), getWidth(), getHeight());
+        if (rightHeartPartTexture != null)
+            batch.draw(rightHeartPartTexture, getX(), getY(), getWidth(), getHeight());
     }
 
     @Override

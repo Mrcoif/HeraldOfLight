@@ -34,13 +34,15 @@ public abstract class HeroActor extends Actor {
     protected Texture texture;
     protected Rectangle boundary;
 
-    protected float startStep = 20;
+    protected float startStep = 5;
     protected Vector2 step = new Vector2(5, 5);
     public Vector2 moveTo = new Vector2();
     public Vector2 start = new Vector2(40, 100);
 
     protected int time = 0;
     protected int animationStepTime = 15;
+
+    private boolean XAnimation = false;
 
     public HeroActor() {
 
@@ -94,9 +96,11 @@ public abstract class HeroActor extends Actor {
                             else b = getY() - moveTo.y;
 
                             if (a > b) {
+                                XAnimation = true;
                                 step.x = startStep;
                                 step.y = (step.x * (b)) / (a);
                             } else {
+                                XAnimation = false;
                                 step.y = startStep;
                                 step.x = (step.y * (a)) / (b);
                             }
@@ -133,7 +137,6 @@ public abstract class HeroActor extends Actor {
 
         boundary.x = getX() - getWidth() / 2;
         boundary.y = getY();
-        if (time <= 1000) time++;
     }
 
     public Rectangle getBoundary() {
@@ -179,13 +182,21 @@ public abstract class HeroActor extends Actor {
     }
 
     private void goAnimation() {
+        if (time < 30) time++;
+        if(time == 30) time = 0;
+
         if (heroIsMoveX || heroIsMoveY) {
-            if (time > animationStepTime) {
-                texture = new Texture(Gdx.files.internal("General/Hero/hero_go_1.png"));
+            if(XAnimation && XMoveVector){
+
             }
-            if (time > animationStepTime * 2) {
-                texture = new Texture(Gdx.files.internal("General/Hero/hero_go_2.png"));
-                time = 0;
+            if(XAnimation && !XMoveVector){
+
+            }
+            if(!XAnimation && YMoveVector){
+                if(time%5 == 0)texture = new Texture(Gdx.files.internal("General/Hero/goUp/" + time/5 +".png"));
+            }
+            if(!XAnimation && !YMoveVector){
+                if(time%6 == 0)texture = new Texture(Gdx.files.internal("General/Hero/goDown/" + time/6 +".png"));
             }
         } else {
             texture = new Texture(Gdx.files.internal("General/Hero/hero_stand.png"));

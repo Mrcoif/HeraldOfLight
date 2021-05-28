@@ -47,8 +47,9 @@ public class MyGame extends Game {
         screens[3] = new LakeSideScreen(this);
         screens[4] = new IslandScreen(this);
 
-//        this.setScreen(new MainMenuScreen(this));
-        this.setScreen(screens[3]);
+        this.setScreen(new MainMenuScreen(this));
+//        this.setScreen(screens[4]);
+
     }
 
     @Override

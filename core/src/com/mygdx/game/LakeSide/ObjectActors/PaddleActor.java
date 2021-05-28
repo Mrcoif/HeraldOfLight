@@ -1,9 +1,11 @@
-package com.mygdx.game.Bridge.ObjectActors;
+package com.mygdx.game.LakeSide.ObjectActors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
@@ -12,16 +14,20 @@ import com.mygdx.game.GeneralActors.UserInterface.ButtonActor;
 import com.mygdx.game.GeneralActors.UserInterface.ItemActor;
 
 import static com.mygdx.game.BaseScreen.stuff;
+import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
+import static com.mygdx.game.MyGame.SCREEN_WIDTH;
+import static com.mygdx.game.MyGame.touchPos;
 
-public class StonesActor extends Actor {
+public class PaddleActor extends Actor {
 
-    public Texture texture;
+    private Texture texture;
     private Rectangle boundary;
+    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Lake/cane.mp3"));
 
-    public StonesActor() {
-        setX(1175);
-        setY(300);
-        texture = new Texture(Gdx.files.internal("Bridge/stones.png"));
+    public PaddleActor() {
+        setX(930);
+        setY(190);
+        texture = new Texture(Gdx.files.internal("Lake/paddleCane.png"));
         setWidth(texture.getWidth());
         setHeight(texture.getHeight());
         boundary = new Rectangle(getX(), getY(), texture.getWidth(), +texture.getHeight());
@@ -63,9 +69,11 @@ public class StonesActor extends Actor {
             while (stuff[i] != null) {
                 i++;
             }
-            ItemActor heart = new ItemActor(this.texture, i, "stones");
+            ItemActor heart = new ItemActor(this.texture, i, "paddle",new Vector2(25,35), 110, 75);
             stuff[i] = heart;
             stage.addActor(stuff[i]);
+
+            sound.play();
             remove();
         }
     }

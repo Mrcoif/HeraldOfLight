@@ -1,9 +1,10 @@
-package com.mygdx.game.LakeSide.ObjectActors;
+package com.mygdx.game.Сrossroad.ObjectActors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
@@ -13,15 +14,15 @@ import com.mygdx.game.GeneralActors.UserInterface.ItemActor;
 
 import static com.mygdx.game.BaseScreen.stuff;
 
-public class HeartActor extends Actor {
+public class StonesActor extends Actor {
 
-    private Texture texture;
+    public Texture texture;
     private Rectangle boundary;
 
-    public HeartActor() {
-        setX(915);
-        setY(225);
-        texture = new Texture(Gdx.files.internal("Lake/heart.png"));
+    public StonesActor() {
+        setX(650);
+        setY(235);
+        texture = new Texture(Gdx.files.internal("Bridge/stones.png"));
         setWidth(texture.getWidth());
         setHeight(texture.getHeight());
         boundary = new Rectangle(getX(), getY(), texture.getWidth(), +texture.getHeight());
@@ -63,7 +64,7 @@ public class HeartActor extends Actor {
             while (stuff[i] != null) {
                 i++;
             }
-            ItemActor heart = new ItemActor(this.texture, i, "heart");
+            ItemActor heart = new ItemActor(this.texture, i, "stones", new Vector2(25,35), 110, 75);
             stuff[i] = heart;
             stage.addActor(stuff[i]);
             remove();

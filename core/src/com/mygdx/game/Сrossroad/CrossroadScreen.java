@@ -11,6 +11,7 @@ import com.mygdx.game.GeneralActors.TextureActor;
 import com.mygdx.game.HeartStone.ObjectActors.HeartStoneHeroActor;
 import com.mygdx.game.MyGame;
 import com.mygdx.game.Сrossroad.ObjectActors.CrossroadHeroActor;
+import com.mygdx.game.Сrossroad.ObjectActors.StonesActor;
 
 import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
 import static com.mygdx.game.MyGame.SCREEN_WIDTH;
@@ -50,6 +51,8 @@ public class CrossroadScreen extends BaseScreen {
     @Override
     public void addActors() {
         stage.addActor(new TextureActor("Crossroad/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+
+        stage.addActor(new StonesActor());
 
         stage.addActor(new CrossroadHeroActor( 100, 115, new Rectangle(235, 213, 230, 102) ));
 

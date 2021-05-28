@@ -1,7 +1,6 @@
 package com.mygdx.game.LakeSide;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -9,14 +8,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
 import com.mygdx.game.GeneralActors.TextureActor;
-import com.mygdx.game.LakeSide.ObjectActors.HeartActor;
+import com.mygdx.game.LakeSide.ObjectActors.PaddleActor;
 import com.mygdx.game.LakeSide.ObjectActors.LakeSideHeroActor;
-import com.mygdx.game.LakeSide.ObjectActors.PillarActor;
+import com.mygdx.game.LakeSide.ObjectActors.BoatActor;
 import com.mygdx.game.MyGame;
 
 import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
 import static com.mygdx.game.MyGame.SCREEN_WIDTH;
-import static com.mygdx.game.MyGame.touchPos;
 
 public class LakeSideScreen extends BaseScreen {
 
@@ -33,6 +31,9 @@ public class LakeSideScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
+        for (int i = 0; i<3; i++) {
+            if(stuff[i]!=null)stage.addActor(stuff[i]);
+        }
     }
 
     @Override
@@ -40,9 +41,9 @@ public class LakeSideScreen extends BaseScreen {
         super.render(delta);
         Array<Actor> actors2 = stage.getActors();
         for (Actor actor2 : actors2) {
-            if (actor2 instanceof PillarActor) {
-                if (((PillarActor) actor2).islandScreen) {
-                    ((PillarActor) actor2).islandScreen = false;
+            if (actor2 instanceof BoatActor) {
+                if (((BoatActor) actor2).islandScreen) {
+                    ((BoatActor) actor2).islandScreen = false;
                     music.stop();
                     myGame.setScreen(myGame.screens[4]);
                 }
@@ -54,11 +55,13 @@ public class LakeSideScreen extends BaseScreen {
     public void addActors() {
         stage.addActor(new TextureActor("Lake/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
-        stage.addActor(new PillarActor(1));
+        stage.addActor(new TextureActor("Lake/pillar_1.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+        stage.addActor(new TextureActor("Lake/pillar_2.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
+        stage.addActor(new TextureActor("Lake/grass.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
-        stage.addActor(new PillarActor(2));
+        stage.addActor(new PaddleActor());
 
-        stage.addActor(new HeartActor());
+        stage.addActor(new BoatActor(this));
 
         stage.addActor(new TextureActor("Lake/cane.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
@@ -75,8 +78,8 @@ public class LakeSideScreen extends BaseScreen {
         Array.ArrayIterator<Actor> iterator1 = actors.iterator();
         while (iterator1.hasNext()) {
             Actor actor1 = iterator1.next();
-            if (actor1 instanceof PillarActor) {
-                ((PillarActor) (actor1)).drawDebug(renderer);
+            if (actor1 instanceof BoatActor) {
+                ((BoatActor) (actor1)).drawDebug(renderer);
             }
             if (actor1 instanceof LakeSideHeroActor) {
                 ((LakeSideHeroActor) (actor1)).drawDebug(renderer);

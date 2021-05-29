@@ -1,6 +1,7 @@
 package com.mygdx.game.Сrossroad.ObjectActors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
@@ -18,11 +19,12 @@ public class StonesActor extends Actor {
 
     public Texture texture;
     private Rectangle boundary;
+    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Crossroad/stones.mp3"));
 
     public StonesActor() {
         setX(650);
         setY(235);
-        texture = new Texture(Gdx.files.internal("Bridge/stones.png"));
+        texture = new Texture(Gdx.files.internal("Crossroad/stones.png"));
         setWidth(texture.getWidth());
         setHeight(texture.getHeight());
         boundary = new Rectangle(getX(), getY(), texture.getWidth(), +texture.getHeight());
@@ -64,6 +66,7 @@ public class StonesActor extends Actor {
             while (stuff[i] != null) {
                 i++;
             }
+            sound.setVolume(sound.play(), 0.1f);
             ItemActor heart = new ItemActor(this.texture, i, "stones", new Vector2(25,35), 110, 75);
             stuff[i] = heart;
             stage.addActor(stuff[i]);

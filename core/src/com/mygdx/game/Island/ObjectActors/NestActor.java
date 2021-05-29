@@ -1,6 +1,7 @@
 package com.mygdx.game.Island.ObjectActors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
@@ -23,6 +24,8 @@ public class NestActor extends Actor {
     private Texture heartTexture;
     private Rectangle boundary;
     private IslandScreen islandScreen;
+
+    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Island/heart.mp3"));
 
     private boolean stonesIsUsed = false;
 
@@ -113,6 +116,7 @@ public class NestActor extends Actor {
                     if (actor1 instanceof HeroActor) {
                         HeroActor heroActor = (HeroActor) actor1;
                         if (boundary.overlaps(heroActor.getBoundary())) {
+                            sound.play();
                             for (int i = 0; i < stuff.length; i++) {
                                 if (stuff[i] == null) {
                                     ItemActor heart = new ItemActor(new Texture(Gdx.files.internal("Island/rightHeartPartItem.png")), i, "rightHeartPart",new Vector2(50,40), 55, 50);

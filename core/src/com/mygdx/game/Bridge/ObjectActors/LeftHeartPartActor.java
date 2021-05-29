@@ -24,7 +24,8 @@ public class LeftHeartPartActor extends Actor {
     private Texture texture;
     private Rectangle boundary;
 
-    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Bridge/rod.mp3"));
+
+    private Sound sound1 = Gdx.audio.newSound(Gdx.files.internal("Bridge/rod.mp3"));
 
     public LeftHeartPartActor() {
         texture = new Texture(Gdx.files.internal("Bridge/leftHeartPart.png"));
@@ -89,7 +90,7 @@ public class LeftHeartPartActor extends Actor {
                         stuff[i] = heart;
                         stage.addActor(stuff[i]);
                         remove();
-                        sound.play();
+                        sound1.play();
                     }
                 }
             }

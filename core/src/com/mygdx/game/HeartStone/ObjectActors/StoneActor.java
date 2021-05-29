@@ -5,11 +5,9 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
 import com.mygdx.game.GeneralActors.HeroActor;
@@ -130,10 +128,12 @@ public class StoneActor extends Actor {
             baseScreen.myGame.getFont().draw(batch, "heart-shaped stone", 100, 400);
         }
         batch.draw(texture, getX(), getY(), getWidth(), getHeight());
-        if (leftHeartPartTexture != null)
-            batch.draw(leftHeartPartTexture, getX(), getY(), getWidth(), getHeight());
-        if (rightHeartPartTexture != null)
+        if (rightHeartPartTexture != null){
             batch.draw(rightHeartPartTexture, getX(), getY(), getWidth(), getHeight());
+        }
+        if (leftHeartPartTexture != null) {
+            batch.draw(leftHeartPartTexture, getX(), getY(), getWidth(), getHeight());
+        }
     }
 
     @Override

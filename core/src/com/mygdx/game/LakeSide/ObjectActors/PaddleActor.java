@@ -20,6 +20,8 @@ import static com.mygdx.game.MyGame.touchPos;
 
 public class PaddleActor extends Actor {
 
+
+
     private Texture texture;
     private Rectangle boundary;
     private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Lake/cane.mp3"));
@@ -73,7 +75,7 @@ public class PaddleActor extends Actor {
             stuff[i] = heart;
             stage.addActor(stuff[i]);
 
-            sound.play();
+            sound.setVolume(sound.play(), 0.5f);
             remove();
         }
     }

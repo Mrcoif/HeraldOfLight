@@ -1,6 +1,7 @@
 package com.mygdx.game.Island.ObjectActors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
@@ -18,6 +19,7 @@ public class RodActor extends Actor{
 
     private Texture texture;
     private Rectangle boundary;
+    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Island/rod.mp3"));
 
     public RodActor() {
         setX(770);
@@ -64,6 +66,7 @@ public class RodActor extends Actor{
             while (stuff[i] != null) {
                 i++;
             }
+            sound.play();
             ItemActor heart = new ItemActor(this.texture, i, "rod", new Vector2(25,35), 110, 75);
             stuff[i] = heart;
             stage.addActor(stuff[i]);

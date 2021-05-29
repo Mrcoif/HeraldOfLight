@@ -34,7 +34,7 @@ public abstract class HeroActor extends Actor {
     protected Texture texture;
     protected Rectangle boundary;
 
-    protected float startStep = 5;
+    protected float startStep = 25;
     protected Vector2 step = new Vector2(5, 5);
     public Vector2 moveTo = new Vector2();
     public Vector2 start = new Vector2(40, 100);

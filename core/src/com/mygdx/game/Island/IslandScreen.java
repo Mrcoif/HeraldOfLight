@@ -22,7 +22,9 @@ public class IslandScreen extends BaseScreen {
 
     private int darkTime = 100000;
     private Sound crackSound = Gdx.audio.newSound(Gdx.files.internal("Island/crackSound.mp3"));
-    private int textTime;
+    private Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("Island/stone.mp3"));
+    private int textTime = 180;
+    private boolean firstSound = true;
 
     public IslandScreen(final MyGame myGame) {
         super(myGame, -1, -1);
@@ -46,13 +48,13 @@ public class IslandScreen extends BaseScreen {
 
         boolean overlap = false;
 
-        Array<Actor> actors2 = stage.getActors();
-        for (Actor actor2 : actors2) {
-            if (actor2 instanceof ButtonActor) {
-                if (((ButtonActor) actor2).isTouched && ((ButtonActor) actor2).buttonType.equals("explore")) {
-                    textTime = 0;
+            Array<Actor> actors2 = stage.getActors();
+            for (Actor actor2 : actors2) {
+                if (actor2 instanceof ButtonActor) {
+                    if (((ButtonActor) actor2).isTouched && ((ButtonActor) actor2).buttonType.equals("explore")) {
+                        textTime = 0;
+                    }
                 }
-            }
         }
         if (textTime < 180) {
             textTime += 1;
@@ -80,7 +82,11 @@ public class IslandScreen extends BaseScreen {
             }
         }
 
-        if (darkTime > 240) {
+        if (darkTime == 60 && firstSound) {
+            firstSound = false;
+            crackSound.play();
+        }
+        if (darkTime > 300) {
             for (Actor actor2 : actors2) {
                 if (actor2 instanceof TextureActor) {
                     if (((TextureActor) actor2).getHeight() == SCREEN_HEIGHT + 100) {
@@ -90,7 +96,7 @@ public class IslandScreen extends BaseScreen {
                 }
             }
         }
-        if (darkTime < 300) darkTime++;
+        if (darkTime < 1000) darkTime++;
     }
 
 
@@ -133,7 +139,7 @@ public class IslandScreen extends BaseScreen {
     public void startNestFalling() {
         stage.addActor(new TextureActor("General/black.png", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 100));
         stopMusic();
-        crackSound.play();
+        sound2.play();
         darkTime = 0;
     }
 }

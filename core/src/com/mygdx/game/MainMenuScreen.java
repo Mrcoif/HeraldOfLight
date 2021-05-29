@@ -22,6 +22,7 @@ public class MainMenuScreen implements Screen {
 
     public MainMenuScreen(final MyGame myGame){
         this.myGame = myGame;
+        texture = new Texture(Gdx.files.internal("MainMenu/startButton.png"));
         startX = SCREEN_WIDTH/2-texture.getWidth()/2;
         startY = SCREEN_HEIGHT/2-texture.getHeight()/2;
 

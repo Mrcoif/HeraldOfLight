@@ -4,6 +4,11 @@ ADDED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:2:1-24:12
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:2:1-24:12
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support:media2:28.0.0-alpha03] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\d6c84e121683653fe462849b527910f0\media2-28.0.0-alpha03\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\cbea71217ef362683e5b763aa4358fb1\support-media-compat-28.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\3c8089c3a8c45848fd4f4f1774de1825\support-compat-28.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\a2938833df5a94bac010cc05f63ba40d\versionedparcelable-28.0.0\AndroidManifest.xml:17:1-25:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\2ffa1ce867a46c90f6e6f69464dca32c\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:2:1-24:12
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:2:1-24:12
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:2:1-24:12
@@ -23,6 +28,12 @@ INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\andr
 		ADDED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:2:11-69
 application
 ADDED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:5:5-22:19
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\3c8089c3a8c45848fd4f4f1774de1825\support-compat-28.0.0\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\3c8089c3a8c45848fd4f4f1774de1825\support-compat-28.0.0\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\a2938833df5a94bac010cc05f63ba40d\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\a2938833df5a94bac010cc05f63ba40d\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\3c8089c3a8c45848fd4f4f1774de1825\support-compat-28.0.0\AndroidManifest.xml:22:18-91
 	android:label
 		ADDED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml:10:9-40
 	android:appCategory
@@ -59,6 +70,16 @@ uses-sdk
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml
+MERGED from [com.android.support:media2:28.0.0-alpha03] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\d6c84e121683653fe462849b527910f0\media2-28.0.0-alpha03\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:media2:28.0.0-alpha03] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\d6c84e121683653fe462849b527910f0\media2-28.0.0-alpha03\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\cbea71217ef362683e5b763aa4358fb1\support-media-compat-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\cbea71217ef362683e5b763aa4358fb1\support-media-compat-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\3c8089c3a8c45848fd4f4f1774de1825\support-compat-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\3c8089c3a8c45848fd4f4f1774de1825\support-compat-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\a2938833df5a94bac010cc05f63ba40d\versionedparcelable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\a2938833df5a94bac010cc05f63ba40d\versionedparcelable-28.0.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\2ffa1ce867a46c90f6e6f69464dca32c\runtime-1.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Святослав\.gradle\caches\transforms-2\files-2.1\2ffa1ce867a46c90f6e6f69464dca32c\runtime-1.1.1\AndroidManifest.xml:20:5-44
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml
 INJECTED from D:\Programs\Android\Android Studio Projects\SatGameZagProject\android\AndroidManifest.xml
 	android:targetSdkVersion

@@ -49,6 +49,7 @@ public class MyGame extends Game {
 
         this.setScreen(new MainMenuScreen(this));
 //        this.setScreen(screens[4]);
+//        this.setScreen(new EndScreen(this));
 
     }
 

@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
+import com.mygdx.game.EndScreen;
 import com.mygdx.game.GeneralActors.HeroActor;
 import com.mygdx.game.GeneralActors.UserInterface.ButtonActor;
 import com.mygdx.game.GeneralActors.UserInterface.ItemActor;
@@ -118,6 +119,10 @@ public class StoneActor extends Actor {
                     }
                 }
             }
+        }
+        if(rightHeartPartTexture!=null && leftHeartPartTexture != null){
+            baseScreen.stopMusic();
+            baseScreen.myGame.setScreen(new EndScreen(baseScreen.myGame));
         }
     }
 

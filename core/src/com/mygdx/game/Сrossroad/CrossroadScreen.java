@@ -17,6 +17,7 @@ import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
 import static com.mygdx.game.MyGame.SCREEN_WIDTH;
 
 public class CrossroadScreen extends BaseScreen {
+    private int textTime = 0;
 
     public CrossroadScreen(MyGame myGame) {
         super(myGame, 2, 3);
@@ -45,6 +46,13 @@ public class CrossroadScreen extends BaseScreen {
                     ((CrossroadHeroActor) actor).setY(((CrossroadHeroActor) actor).getY() - 100);
                 }
             }
+        }
+
+        if (textTime < 180) {
+            textTime += 1;
+            myGame.batch.begin();
+            myGame.getFont().draw(myGame.batch, "Where am I", 100, 400);
+            myGame.batch.end();
         }
     }
 

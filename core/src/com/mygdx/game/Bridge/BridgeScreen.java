@@ -37,7 +37,7 @@ public class BridgeScreen extends BaseScreen {
 
         stage.addActor(new LeftHeartPartActor());
 
-        stage.addActor(new BridgeHeroActor(100));
+        stage.addActor(new BridgeHeroActor(100, this));
 
         stage.addActor(new TextureActor("Bridge/water.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 

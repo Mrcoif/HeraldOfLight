@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class TextureActor extends Actor {
 
-    private Texture texture;
+    public Texture texture;
 
     public TextureActor(String textureName, float startX, float startY, float width, float height) {
         texture = new Texture(Gdx.files.internal(textureName));

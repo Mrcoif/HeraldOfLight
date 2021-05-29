@@ -34,7 +34,7 @@ public abstract class HeroActor extends Actor {
     protected Texture texture;
     protected Rectangle boundary;
 
-    protected float startStep = 25;
+    protected float startStep = 5;
     protected Vector2 step = new Vector2(5, 5);
     public Vector2 moveTo = new Vector2();
     public Vector2 start = new Vector2(40, 100);
@@ -187,10 +187,10 @@ public abstract class HeroActor extends Actor {
 
         if (heroIsMoveX || heroIsMoveY) {
             if(XAnimation && XMoveVector){
-
+                if(time%8 == 0)texture = new Texture(Gdx.files.internal("General/Hero/goRight/" + time/8 +".png"));
             }
             if(XAnimation && !XMoveVector){
-
+                if(time%8 == 0)texture = new Texture(Gdx.files.internal("General/Hero/goLeft/" + time/8 +".png"));
             }
             if(!XAnimation && YMoveVector){
                 if(time%5 == 0)texture = new Texture(Gdx.files.internal("General/Hero/goUp/" + time/5 +".png"));

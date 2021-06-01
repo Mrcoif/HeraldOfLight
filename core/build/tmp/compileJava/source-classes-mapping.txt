@@ -16,8 +16,8 @@ com/mygdx/game/Bridge/ObjectActors/BridgeHeroActor.java
  com.mygdx.game.Bridge.ObjectActors.BridgeHeroActor
 com/mygdx/game/GeneralActors/HeroActor.java
  com.mygdx.game.GeneralActors.HeroActor
-com/mygdx/game/Island/IslandScreen.java
- com.mygdx.game.Island.IslandScreen
+com/mygdx/game/EndScreen.java
+ com.mygdx.game.EndScreen
 com/mygdx/game/Сrossroad/ObjectActors/CrossroadHeroActor.java
  com.mygdx.game.Сrossroad.ObjectActors.CrossroadHeroActor
 com/mygdx/game/Island/ObjectActors/NestActor.java
@@ -30,8 +30,8 @@ com/mygdx/game/GeneralActors/UserInterface/ButtonActor.java
  com.mygdx.game.GeneralActors.UserInterface.ButtonActor
 com/mygdx/game/MainMenuScreen.java
  com.mygdx.game.MainMenuScreen
-com/mygdx/game/Сrossroad/CrossroadScreen.java
- com.mygdx.game.Сrossroad.CrossroadScreen
+com/mygdx/game/HeartStone/ObjectActors/StoneActor.java
+ com.mygdx.game.HeartStone.ObjectActors.StoneActor
 com/mygdx/game/LakeSide/ObjectActors/BoatActor.java
  com.mygdx.game.LakeSide.ObjectActors.BoatActor
 com/mygdx/game/LakeSide/ObjectActors/LakeSideHeroActor.java
@@ -42,11 +42,11 @@ com/mygdx/game/GeneralActors/UserInterface/InventoryActor.java
  com.mygdx.game.GeneralActors.UserInterface.InventoryActor
 com/mygdx/game/LakeSide/LakeSideScreen.java
  com.mygdx.game.LakeSide.LakeSideScreen
-com/mygdx/game/HeartStone/ObjectActors/HeartStoneHeroActor.java
- com.mygdx.game.HeartStone.ObjectActors.HeartStoneHeroActor
-com/mygdx/game/HeartStone/ObjectActors/StoneActor.java
- com.mygdx.game.HeartStone.ObjectActors.StoneActor
 com/mygdx/game/MyGame.java
  com.mygdx.game.MyGame
-com/mygdx/game/EndScreen.java
- com.mygdx.game.EndScreen
+com/mygdx/game/Island/IslandScreen.java
+ com.mygdx.game.Island.IslandScreen
+com/mygdx/game/HeartStone/ObjectActors/HeartStoneHeroActor.java
+ com.mygdx.game.HeartStone.ObjectActors.HeartStoneHeroActor
+com/mygdx/game/Сrossroad/CrossroadScreen.java
+ com.mygdx.game.Сrossroad.CrossroadScreen

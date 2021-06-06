@@ -12,7 +12,6 @@ import com.mygdx.game.GeneralActors.TextureActor;
 import com.mygdx.game.GeneralActors.UserInterface.ButtonActor;
 import com.mygdx.game.Island.ObjectActors.IslandHeroActor;
 import com.mygdx.game.Island.ObjectActors.NestActor;
-import com.mygdx.game.Island.ObjectActors.RodActor;
 import com.mygdx.game.MyGame;
 
 import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
@@ -107,8 +106,6 @@ public class IslandScreen extends BaseScreen {
         stage.addActor(new TextureActor("Island/boat.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100));
 
         stage.addActor(new NestActor(this));
-
-        stage.addActor(new RodActor());
 
         stage.addActor(new IslandHeroActor(100, 200));
 

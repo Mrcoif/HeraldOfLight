@@ -1,4 +1,4 @@
-package com.mygdx.game.Island.ObjectActors;
+package com.mygdx.game.LakeSide.ObjectActors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -14,20 +14,22 @@ import com.mygdx.game.GeneralActors.UserInterface.ButtonActor;
 import com.mygdx.game.GeneralActors.UserInterface.ItemActor;
 
 import static com.mygdx.game.BaseScreen.stuff;
+import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
+import static com.mygdx.game.MyGame.SCREEN_WIDTH;
 
 public class RodActor extends Actor{
 
     private Texture texture;
-    private Rectangle boundary;
-    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Island/rod.mp3"));
+    public Rectangle boundary;
+    private Sound sound = Gdx.audio.newSound(Gdx.files.internal("Lake/rod.mp3"));
 
     public RodActor() {
-        setX(770);
-        setY(165);
-        texture = new Texture(Gdx.files.internal("Island/rod.png"));
+        setX(585);
+        setY(295);
+        texture = new Texture(Gdx.files.internal("Lake/rod.png"));
         setWidth(texture.getWidth());
         setHeight(texture.getHeight());
-        boundary = new Rectangle(getX(), getY(), texture.getWidth(), +texture.getHeight());
+        boundary = new Rectangle(585, 295, 195, 35);
     }
 
     @Override

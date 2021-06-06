@@ -8,15 +8,21 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.BaseScreen;
 import com.mygdx.game.GeneralActors.TextureActor;
+import com.mygdx.game.LakeSide.ObjectActors.FisherActor;
 import com.mygdx.game.LakeSide.ObjectActors.PaddleActor;
 import com.mygdx.game.LakeSide.ObjectActors.LakeSideHeroActor;
 import com.mygdx.game.LakeSide.ObjectActors.BoatActor;
+import com.mygdx.game.LakeSide.ObjectActors.RodActor;
 import com.mygdx.game.MyGame;
 
 import static com.mygdx.game.MyGame.SCREEN_HEIGHT;
 import static com.mygdx.game.MyGame.SCREEN_WIDTH;
+import static com.mygdx.game.MyGame.touchPos;
 
 public class LakeSideScreen extends BaseScreen {
+
+    Rectangle fisherBoundary = new FisherActor().boundary;
+    Rectangle rodBoundary = new RodActor().boundary;
 
     public LakeSideScreen(final MyGame myGame ) {
         super(myGame, 1, -1);
@@ -55,6 +61,8 @@ public class LakeSideScreen extends BaseScreen {
     public void addActors() {
         stage.addActor(new TextureActor("Lake/background.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
 
+        stage.addActor(new FisherActor());
+
         stage.addActor(new TextureActor("Lake/pillar_1.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
         stage.addActor(new TextureActor("Lake/pillar_2.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
         stage.addActor(new TextureActor("Lake/grass.png", 0, 100, SCREEN_WIDTH, SCREEN_HEIGHT-100));
@@ -91,6 +99,9 @@ public class LakeSideScreen extends BaseScreen {
         for (float x = 0; x <= SCREEN_WIDTH; x += 0.25) {
             renderer.point(x, (float) (60 * Math.sin(0.01 * x - 5) + 280), 0);
         }
+        renderer.rect(fisherBoundary.x, fisherBoundary.y, fisherBoundary.width, fisherBoundary.height);
+        renderer.rect(rodBoundary.x, rodBoundary.y, rodBoundary.width, rodBoundary.height);
         renderer.end();
+//        System.out.println(touchPos.toString());
     }
 }
